@@ -50,14 +50,7 @@ function changePlayer(){
 
 
 function winGame(){
-    for(let i=0; i < boxes.length; i++) {
-        if ((boxes[i].classList.contains('box-filled-1')) && (boxes[i + 1].classList.contains('box-filled-1')) && (boxes[i - 1].classList.contains('box-filled-1'))) {
-            alert('o wins');
-        }
-        else if ((boxes[i].classList.contains('box-filled-2')) && (boxes[i + 1].classList.contains('box-filled-2')) && (boxes[i - 1].classList.contains('box-filled-2'))) {
-            alert('x wins');
-        }
-    }
+
 }
 
 boxes.forEach(function(box) {
