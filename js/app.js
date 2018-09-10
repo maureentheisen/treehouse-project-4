@@ -49,37 +49,39 @@ function changePlayer(){
 }
 
 
-function winGame(){
-    for(let i=0; i < boxes.length; i++) {
-        if ((boxes[i].classList.contains('box-filled-1')) && (boxes[i + 1].classList.contains('box-filled-1')) && (boxes[i + 2].classList.contains('box-filled-1'))) {
-            alert('o wins');
-        }
-        else if ((boxes[i].classList.contains('box-filled-2')) && (boxes[i + 1].classList.contains('box-filled-2')) && (boxes[i + 2].classList.contains('box-filled-2'))) {
-            alert('x wins');
-        }
-    }
-}
+
+
+
+
+
 
 boxes.forEach(function(box) {
     box.addEventListener("mouseenter", fillBox, false);
     box.addEventListener("mouseleave", emptyBox, false);
+
     box.addEventListener("click", function (event) {
-        if (player1.classList.contains('active')) {
-            event.target.classList.add('box-filled-1');
-            event.target.removeEventListener("mouseleave", emptyBox, false);
-            event.target.removeEventListener("mouseenter", fillBox, false);
-            winGame();
-            changePlayer();
-        }
-        else if (player2.classList.contains('active')) {
-            event.target.classList.add('box-filled-2');
-            event.target.removeEventListener("mouseleave", emptyBox, false);
-            event.target.removeEventListener("mouseenter", fillBox, false);
-            winGame();
-            changePlayer();
-        }
+            if (player1.classList.contains('active')) {
+                if(!event.target.classList.contains('box-filled-2')) {
+                    event.target.classList.add('box-filled-1');
+                    event.target.removeEventListener("mouseleave", emptyBox, false);
+                    event.target.removeEventListener("mouseenter", fillBox, false);
+                    winGame();
+                    changePlayer();
+                }
+            }
+            else if (player2.classList.contains('active')) {
+                if (!event.target.classList.contains('box-filled-1')){
+                    event.target.classList.add('box-filled-2');
+                    event.target.removeEventListener("mouseleave", emptyBox, false);
+                    event.target.removeEventListener("mouseenter", fillBox, false);
+                    winGame();
+                    changePlayer();
+            }
+
+            }
     })
 });
+
 
 
 
